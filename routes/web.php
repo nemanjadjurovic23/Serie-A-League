@@ -10,10 +10,6 @@ Route::get('/standings', [TeamsController::class, 'getStandings'])->name('teams.
 Route::get('/fixtures', [TeamsController::class, 'fixtures'])->name('teams.fixtures');
 Route::get('/results', [TeamsController::class, 'results'])->name('teams.results');
 
-Route::get('/update-standings', [FootballController::class, 'updateStandings'])->name('football.updateStandings');
-Route::get('/update-teams', [FootballController::class, 'updateTeams'])->name('football.updateTeams');
-
-
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
