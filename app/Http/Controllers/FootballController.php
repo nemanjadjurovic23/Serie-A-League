@@ -19,4 +19,9 @@ class FootballController extends Controller
         return view('standings', compact('teams'));
     }
 
+    public function welcome()
+    {
+        $standings = StandingsModel::paginate(5);
+        return view('welcome', compact('standings'));
+    }
 }

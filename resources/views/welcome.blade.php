@@ -17,48 +17,28 @@
             <thead>
             <tr>
                 <th>Position</th>
+                <th>Logo</th>
                 <th>Team</th>
+                <th>Played</th>
                 <th>Points</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Juventus</td>
-                <td>75</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>AC Milan</td>
-                <td>70</td>
-            </tr>
-            <!-- Add more rows as needed -->
+            @foreach($standings as $standing)
+                <tr>
+                    <td>{{ $standing->position }}</td>
+                    <td><img src="{{ $standing->badge }}" alt="{{ $standing->team_name }} Logo" style="width: 50px; height: auto;"></td>
+                    <td>{{ $standing->team_name }}</td>
+                    <td>{{ $standing->played }}</td>
+                    <td>{{ $standing->points }}</td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-    </div>
 
-    <div class="container mt-4">
-        <h2>Fixture Calendar</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Match 1</h5>
-                        <p class="card-text">Team A vs Team B</p>
-                        <p class="card-text">Date: 2024-07-18</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">Match 2</h5>
-                        <p class="card-text">Team C vs Team D</p>
-                        <p class="card-text">Date: 2024-07-19</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Add more cards for additional matches -->
+        <div class="d-flex justify-content-center mt-4">
+            {{ $standings->links('pagination::bootstrap-4') }}
         </div>
     </div>
 @endsection
+

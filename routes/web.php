@@ -3,7 +3,7 @@
 use App\Http\Controllers\FootballController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome')->name('football.home');
+Route::get('/', [FootballController::class, 'welcome'])->name('football.home');
 Route::get('/teams', [FootballController::class, 'getTeams'])->name('football.getTeams');
 Route::get('/standings', [FootballController::class, 'getStandings'])->name('football.getStandings');
 Route::get('/fixtures', [FootballController::class, 'fixtures'])->name('football.fixtures');
