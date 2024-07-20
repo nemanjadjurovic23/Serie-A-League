@@ -9,16 +9,16 @@
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Teams</a>
+                <a class="nav-link" href="{{ route('teams.index') }}">Teams</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Fixtures</a>
+                <a class="nav-link" href="{{ route('teams.fixtures') }}">Fixtures</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Results</a>
+                <a class="nav-link" href="{{ route('teams.results') }}">Results</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Standings</a>
+                <a class="nav-link" href="{{ route('teams.getStandings') }}">Standings</a>
             </li>
         </ul>
     </div>

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('founded');
+            $table->string('founded');
             $table->string('badge');
             $table->string('stadium_name');
             $table->string('city');
