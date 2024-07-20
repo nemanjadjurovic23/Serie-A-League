@@ -1,14 +1,13 @@
 <?php
 
 use App\Http\Controllers\FootballController;
-use App\Http\Controllers\TeamsController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome');
-Route::get('/teams', [TeamsController::class, 'index'])->name('teams.index');
-Route::get('/standings', [TeamsController::class, 'getStandings'])->name('teams.getStandings');
-Route::get('/fixtures', [TeamsController::class, 'fixtures'])->name('teams.fixtures');
-Route::get('/results', [TeamsController::class, 'results'])->name('teams.results');
+Route::view('/', 'welcome')->name('football.home');
+Route::get('/teams', [FootballController::class, 'getTeams'])->name('football.getTeams');
+Route::get('/standings', [FootballController::class, 'getStandings'])->name('football.getStandings');
+Route::get('/fixtures', [FootballController::class, 'fixtures'])->name('football.fixtures');
+Route::get('/results', [FootballController::class, 'results'])->name('football.results');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

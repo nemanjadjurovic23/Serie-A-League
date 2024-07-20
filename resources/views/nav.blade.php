@@ -6,19 +6,19 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{ route('football.home') }}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('teams.index') }}">Teams</a>
+                <a class="nav-link" href="{{ route('football.getTeams') }}">Teams</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('teams.fixtures') }}">Fixtures</a>
+                <a class="nav-link" href="{{ route('football.fixtures') }}">Fixtures</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('teams.results') }}">Results</a>
+                <a class="nav-link" href="{{ route('football.results') }}">Results</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('teams.getStandings') }}">Standings</a>
+                <a class="nav-link" href="{{ route('football.getStandings') }}">Standings</a>
             </li>
         </ul>
     </div>
