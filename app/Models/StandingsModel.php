@@ -12,7 +12,7 @@ class StandingsModel extends Model
     protected $table = 'standings';
 
     protected $fillable = [
-        'team_id',
+        'team_name',
         'position',
         'played',
         'won',
@@ -20,7 +20,7 @@ class StandingsModel extends Model
         'lost',
         'goals_for',
         'goals_against',
-        'goal_difference',
         'points',
+        'badge',
     ];
 }

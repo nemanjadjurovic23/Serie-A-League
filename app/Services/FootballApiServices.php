@@ -11,9 +11,19 @@ class FootballApiServices
         $response = Http::get('https://apiv3.apifootball.com/', [
             'action' => 'get_teams',
             'league_id' => 207,
-            'APIkey' => 'cb73089c945476df3a098a7690889b8231a786a17976c90ca533542c14771bb9'
+            'APIkey' => env('FOOTBALL_API_KEY')
         ]);
 
+        return $response->json();
+    }
+
+    public function getFootballStanding()
+    {
+        $response = Http::get('https://apiv3.apifootball.com/', [
+            'action' => 'get_standings',
+            'league_id' => 207,
+            'APIkey' => env('FOOTBALL_API_KEY')
+        ]);
         return $response->json();
     }
 }

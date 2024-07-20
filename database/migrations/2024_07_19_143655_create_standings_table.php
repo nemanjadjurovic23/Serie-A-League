@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('standings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('team_id');
+            $table->string('team_name');
             $table->integer('position');
             $table->integer('played');
             $table->integer('won');
@@ -21,11 +21,9 @@ return new class extends Migration
             $table->integer('lost');
             $table->integer('goals_for');
             $table->integer('goals_against');
-            $table->integer('goal_difference');
             $table->integer('points');
+            $table->string('badge');
             $table->timestamps();
-
-            $table->foreign('team_id')->references('id')->on('teams');
         });
     }
 
