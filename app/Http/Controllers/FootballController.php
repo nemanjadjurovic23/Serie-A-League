@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\StandingsModel;
 use App\Models\TeamsModel;
-use App\Services\FootballApiServices;
-use Illuminate\Http\Request;
 
 class FootballController extends Controller
 {

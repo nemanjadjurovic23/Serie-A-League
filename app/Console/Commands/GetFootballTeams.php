@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\TeamsModel;
 use App\Services\FootballApiServices;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Http;
 
 class GetFootballTeams extends Command
 {
