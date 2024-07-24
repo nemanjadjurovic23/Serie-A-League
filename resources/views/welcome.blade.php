@@ -27,8 +27,8 @@
             @foreach($standings as $standing)
                 <tr>
                     <td>{{ $standing->position }}</td>
-                    <td><img src="{{ $standing->badge }}" alt="{{ $standing->team_name }} Logo" style="width: 50px; height: auto;"></td>
-                    <td>{{ $standing->team_name }}</td>
+                    <td><img src="{{ $standing->badge }}" alt="{{ $standing->teams->name }} Logo" style="width: 50px; height: auto;"></td>
+                    <td>{{ $standing->teams->name }}</td>
                     <td>{{ $standing->played }}</td>
                     <td>{{ $standing->points }}</td>
                 </tr>
@@ -40,5 +40,6 @@
             {{ $standings->links('pagination::bootstrap-4') }}
         </div>
     </div>
+
 @endsection
 

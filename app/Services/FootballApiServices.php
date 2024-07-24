@@ -26,5 +26,17 @@ class FootballApiServices
         ]);
         return $response->json();
     }
+
+    public function getFootballEvents()
+    {
+        $response = Http::get('https://apiv3.apifootball.com/', [
+            'action' => 'get_events',
+            'from' => '2023-08-21',
+            'to' => '2024-05-26',
+            'league_id' => 207,
+            'APIkey' => env('FOOTBALL_API_KEY')
+        ]);
+        return $response->json();
+    }
 }
 
