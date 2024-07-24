@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <h2>Upcoming Events</h2>
+        <h2>Results</h2>
         <table class="table table-striped table-bordered">
             <thead>
             <tr>
