@@ -12,6 +12,27 @@ class TeamsModel extends Model
     protected $table = 'teams';
 
     protected $fillable = [
-        'name', 'founded', 'badge', 'stadium_name', 'city', 'stadium_capacity',
+        'team_id',
+        'name',
+        'founded',
+        'badge',
+        'stadium_name',
+        'city',
+        'stadium_capacity',
     ];
+
+    public function standings()
+    {
+        $this->hasMany(StandingsModel::class, 'team_id');
+    }
+
+    public function homeTeams()
+    {
+        return $this->hasMany(EventsModel::class, 'home_team_id');
+    }
+
+    public function awayTeams()
+    {
+        return $this->hasMany(EventsModel::class, 'away_team_id');
+    }
 }
