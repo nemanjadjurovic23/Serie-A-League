@@ -21,18 +21,13 @@ class TeamsModel extends Model
         'stadium_capacity',
     ];
 
-    public function standings()
+    public function homeEvents()
     {
-        $this->hasMany(StandingsModel::class, 'team_id');
+        return $this->hasMany(EventsModel::class, 'home_team_id', 'team_id');
     }
 
-    public function homeTeams()
+    public function awayEvents()
     {
-        return $this->hasMany(EventsModel::class, 'home_team_id');
-    }
-
-    public function awayTeams()
-    {
-        return $this->hasMany(EventsModel::class, 'away_team_id');
+        return $this->hasMany(EventsModel::class, 'away_team_id', 'team_id');
     }
 }

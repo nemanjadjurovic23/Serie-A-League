@@ -6,14 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->integer('team_id')->unique();
+            $table->unsignedBigInteger('team_id')->unique();
             $table->string('name');
             $table->string('founded');
             $table->string('badge');
@@ -24,9 +22,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('teams');
