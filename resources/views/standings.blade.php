@@ -23,8 +23,8 @@
                 @foreach($teams as $team)
                     <tr>
                         <td>{{ $team['position'] }}</td>
-                        <td><img src="{{ $team['badge'] }}" alt="{{ $team['team_name'] }} Badge" style="max-height: 50px; object-fit: contain;"></td>
-                        <td>{{ $team['team_name'] }}</td>
+                        <td><img src="{{ $team['badge'] }}" alt="{{ $team->teams->name }} Badge" style="max-height: 50px; object-fit: contain;"></td>
+                        <td>{{ $team->teams->name }}</td>
                         <td>{{ $team['played'] }}</td>
                         <td>{{ $team['won'] }}</td>
                         <td>{{ $team['drawn'] }}</td>

@@ -12,7 +12,8 @@ class StandingsModel extends Model
     protected $table = 'standings';
 
     protected $fillable = [
-        'team_name',
+        'standings_id',
+        'team_id',
         'position',
         'played',
         'won',
@@ -21,6 +22,11 @@ class StandingsModel extends Model
         'goals_for',
         'goals_against',
         'points',
-        'badge',
+        'badge'
     ];
+
+    public function teams()
+    {
+        return $this->belongsTo(TeamsModel::class, 'team_id');
+    }
 }
