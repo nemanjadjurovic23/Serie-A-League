@@ -10,6 +10,7 @@ Route::controller(FootballController::class)->name('football.')->group(function 
     Route::get('/standings', 'getStandings')->name('getStandings');
     Route::get('/fixtures', 'fixtures')->name('fixtures');
     Route::get('/results', 'results')->name('results');
+    Route::get('/lineups/{match_id}', 'lineups')->name('lineups');
 });
 
 Route::view('dashboard', 'dashboard')

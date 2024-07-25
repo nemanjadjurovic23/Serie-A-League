@@ -12,6 +12,7 @@
                 <th>Status</th>
                 <th>Formations</th>
                 <th>Referee</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                     <td>{{ $event->match_status }}</td>
                     <td>{{ $event->match_home_team_system }} | {{$event->match_away_team_system}}</td>
                     <td>{{ $event->match_referee }}</td>
+                    <td><a href="{{ route('football.lineups', ['match_id' => $event->match_id]) }}">View More</a></td>
                 </tr>
             @endforeach
             </tbody>

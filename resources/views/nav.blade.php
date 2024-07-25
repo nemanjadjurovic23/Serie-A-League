@@ -12,9 +12,6 @@
                 <a class="nav-link" href="{{ route('football.getTeams') }}">Teams</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('football.fixtures') }}">Fixtures</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="{{ route('football.results') }}">Results</a>
             </li>
             <li class="nav-item">
