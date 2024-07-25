@@ -3,11 +3,14 @@
 use App\Http\Controllers\FootballController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [FootballController::class, 'welcome'])->name('football.home');
-Route::get('/teams', [FootballController::class, 'getTeams'])->name('football.getTeams');
-Route::get('/standings', [FootballController::class, 'getStandings'])->name('football.getStandings');
-Route::get('/fixtures', [FootballController::class, 'fixtures'])->name('football.fixtures');
-Route::get('/results', [FootballController::class, 'results'])->name('football.results');
+
+Route::controller(FootballController::class)->name('football.')->group(function () {
+    Route::get('/', 'welcome')->name('home');
+    Route::get('/teams', 'getTeams')->name('getTeams');
+    Route::get('/standings', 'getStandings')->name('getStandings');
+    Route::get('/fixtures', 'fixtures')->name('fixtures');
+    Route::get('/results', 'results')->name('results');
+});
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

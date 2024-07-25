@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\EventsModel;
 use Illuminate\Support\Facades\Http;
 
 class FootballApiServices
@@ -34,6 +35,16 @@ class FootballApiServices
             'from' => '2023-08-21',
             'to' => '2024-05-26',
             'league_id' => 207,
+            'APIkey' => env('FOOTBALL_API_KEY')
+        ]);
+        return $response->json();
+    }
+
+    public function getFootballLineups($match_id)
+    {
+        $response = Http::get('https://apiv3.apifootball.com/', [
+            'action' => 'get_lineups',
+            'match_id' => $match_id,
             'APIkey' => env('FOOTBALL_API_KEY')
         ]);
         return $response->json();

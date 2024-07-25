@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->integer('match_id')->unique();
+            $table->unsignedBigInteger('match_id')->unique();
             $table->integer('country_id');
             $table->integer('league_id');
             $table->date('match_date');
