@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CoachesModel;
 use App\Models\EventsModel;
 use App\Models\LineupsModel;
+use App\Models\PlayerStatisticsModel;
 use App\Models\StandingsModel;
 use App\Models\SubstitutesModel;
 use App\Models\TeamsModel;
@@ -42,13 +43,21 @@ class FootballController extends Controller
     {
         $homePlayers = LineupsModel::where('match_id', $match_id)->where('team_type', 'home')->get();
         $awayPlayers = LineupsModel::where('match_id', $match_id)->where('team_type', 'away')->get();
+
         $homeCoach = CoachesModel::where('match_id', $match_id)->where('team_type', 'home')->first();
         $awayCoach = CoachesModel::where('match_id', $match_id)->where('team_type', 'away')->first();
+
         $homeSubstitutes = SubstitutesModel::where('match_id', $match_id)->where('team_type', 'home')->get();
         $awaySubstitutes = SubstitutesModel::where('match_id', $match_id)->where('team_type', 'away')->get();
         $matches = EventsModel::where('match_id', $match_id)->get();
 
         return view('lineups', compact(
             'homePlayers', 'awayPlayers', 'homeCoach', 'awayCoach', 'homeSubstitutes', 'awaySubstitutes', 'match_id', 'matches'));
+    }
+
+    public function playerStatistics($id) : View
+    {
+        $playerStatistic = PlayerStatisticsModel::where('id', $id)->first();
+        return view('player_statistics', compact( 'playerStatistic'));
     }
 }

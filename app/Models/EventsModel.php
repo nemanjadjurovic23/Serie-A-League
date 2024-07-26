@@ -37,4 +37,9 @@ class EventsModel extends Model
     {
         return $this->belongsTo(TeamsModel::class, 'away_team_id', 'team_id');
     }
+
+    public function playersStatistics()
+    {
+        return $this->hasMany(PlayerStatisticsModel::class, 'match_id', 'match_id');
+    }
 }

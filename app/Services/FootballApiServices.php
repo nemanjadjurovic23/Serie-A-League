@@ -49,5 +49,25 @@ class FootballApiServices
         ]);
         return $response->json();
     }
+
+    public function getFootballPlayersStatistics($match_id)
+    {
+        $response = Http::get('https://apiv3.apifootball.com/', [
+            'action' => 'get_statistics',
+            'match_id' => $match_id,
+            'APIkey' => env('FOOTBALL_API_KEY')
+        ]);
+        return $response->json();
+    }
+
+    public function getFootballStatistics($match_id)
+    {
+        $response = Http::get('https://apiv3.apifootball.com/', [
+            'action' => 'get_statistics',
+            'match_id' => $match_id,
+            'APIkey' => env('FOOTBALL_API_KEY')
+        ]);
+        return $response->json();
+    }
 }
 
