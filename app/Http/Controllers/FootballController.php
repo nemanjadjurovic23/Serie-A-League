@@ -55,9 +55,10 @@ class FootballController extends Controller
             'homePlayers', 'awayPlayers', 'homeCoach', 'awayCoach', 'homeSubstitutes', 'awaySubstitutes', 'match_id', 'matches'));
     }
 
-    public function playerStatistics($id) : View
+    public function playerStatistics($match_id) : View
     {
-        $playerStatistic = PlayerStatisticsModel::where('id', $id)->first();
-        return view('player_statistics', compact( 'playerStatistic'));
+        $playersStatistics = PlayerStatisticsModel::where('match_id', $match_id)->orderBy('player_number', 'asc')->paginate(8);
+
+        return view('player_statistics', compact( 'match_id', 'playersStatistics'));
     }
 }

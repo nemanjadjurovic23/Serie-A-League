@@ -4,6 +4,9 @@
     <div class="container mt-5">
         @foreach($matches as $match)
             <h2 class="mb-4">Match Lineup for: {{ $match->homeTeam->name }} VS {{ $match->awayTeam->name }}</h2>
+            <div class="mb-4">
+                <a href="{{ route('football.playerStatistics', ['match_id' => $match->match_id]) }}" class="btn btn-primary">View Players Statistics</a>
+            </div>
         @endforeach
 
         <div class="row">
