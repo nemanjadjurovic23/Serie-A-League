@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Console\Commands;
+use App\Models\CoachesModel;
 use App\Models\EventsModel;
-use Illuminate\Console\Command;
-use App\Services\FootballApiServices;
 use App\Models\LineupsModel;
 use App\Models\SubstitutesModel;
-use App\Models\CoachesModel;
+use App\Services\FootballApiServices;
+use Illuminate\Console\Command;
 
 class GetFootballLineups extends Command
 {
