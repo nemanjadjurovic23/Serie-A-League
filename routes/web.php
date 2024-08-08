@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FootballController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdminCheckMiddleware;
 use Illuminate\Support\Facades\Route;
-
 
 Route::controller(FootballController::class)->name('football.')->group(function () {
     Route::get('/', 'welcome')->name('home');
@@ -14,12 +16,39 @@ Route::controller(FootballController::class)->name('football.')->group(function 
     Route::get('/players/statistics/{match_id}', 'playerStatistics')->name('playerStatistics');
 });
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-require __DIR__.'/auth.php';
+Route::middleware(AdminCheckMiddleware::class)->prefix('admin')->group(function () {
+
+    Route::controller(AdminController::class)->name('admin.')->group(function () {
+        Route::get('/panel', 'index')->name('panel');
+
+        Route::get('/add-teams', 'addTeams')->name('addTeams');
+        Route::post('/add-team', 'addTeam')->name('addTeam');
+
+        Route::get('/add-standings', 'addStandings')->name('addStandings');
+        Route::post('/add-standing', 'addStanding')->name('addStanding');
+
+        Route::get('/add-results', 'addResults')->name('addResults');
+        Route::post('/add-result', 'addResult')->name('addResult');
+
+        Route::get('/add-lineups', 'addLineups')->name('addLineups');
+        Route::post('/add-lineup', 'addLineup')->name('addLineup');
+
+        Route::get('/add-fixtures', 'addFixtures')->name('addFixtures');
+        Route::post('/add-fixture', 'addFixture')->name('addFixture');
+
+        Route::get('/add-players', 'addPlayers')->name('addPlayers');
+        Route::post('/add-player', 'addPlayer')->name('addPlayer');
+    });
+});
+
+require __DIR__ . '/auth.php';
