@@ -16,21 +16,30 @@ class GetFootballStatistics extends Command
     {
         $apiFootballStatistics = new FootballApiServices();
         $match_id = $this->argument('match_id');
-        $statistics = $apiFootballStatistics->getFootballStatistics($match_id);
+        $statisticsData = $apiFootballStatistics->getFootballStatistics($match_id);
 
-        if (!isset($statistics[$match_id]['statistics'])) {
+        if (!isset($statisticsData[$match_id]['statistics'])) {
             $this->error('No statistics found for match id: ' . $match_id);
             return;
         }
 
+        $statistics = $statisticsData[$match_id]['statistics'];
+
         foreach ($statistics as $statistic) {
+            if (!isset($statistic['type'])) {
+                $this->warn('Skipping statistic entry due to missing "type" key.');
+                continue;
+            }
+
             StatisticsModel::updateOrCreate([
                 'match_id' => $match_id,
                 'type' => $statistic['type'],
-                'home' => $statistics['home'],
+                'home' => $statistic['home'],
                 'away' => $statistic['away'],
             ]);
         }
+
         $this->info('Match statistics imported successfully.');
     }
+
 }

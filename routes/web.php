@@ -33,21 +33,33 @@ Route::middleware(AdminCheckMiddleware::class)->prefix('admin')->group(function 
 
         Route::get('/add-teams', 'addTeams')->name('addTeams');
         Route::post('/add-team', 'addTeam')->name('addTeam');
+        Route::post('/delete-team/{teamId}', 'deleteTeam')->name('deleteTeam');
+        Route::post('/update-team/{teamId}', 'updateTeam')->name('updateTeam');
 
         Route::get('/add-standings', 'addStandings')->name('addStandings');
         Route::post('/add-standing', 'addStanding')->name('addStanding');
+        Route::post('/delete-standing/{standingId}', 'deleteStanding')->name('deleteStanding');
+        Route::post('/update-standing/{standingId}', 'updateStanding')->name('updateStanding');
 
         Route::get('/add-results', 'addResults')->name('addResults');
         Route::post('/add-result', 'addResult')->name('addResult');
+        Route::post('/delete-result/{resultId}', 'deleteResult')->name('deleteResult');
+        Route::post('/update-result/{resultId}', 'updateResult')->name('updateResult');
 
         Route::get('/add-lineups', 'addLineups')->name('addLineups');
         Route::post('/add-lineup', 'addLineup')->name('addLineup');
+        Route::post('/delete-lineups/{lineupId}', 'deleteLineup')->name('deleteLineup');
+        Route::post('/update-lineups/{lineupId}', 'updateLineup')->name('updateLineup');
 
         Route::get('/add-fixtures', 'addFixtures')->name('addFixtures');
         Route::post('/add-fixture', 'addFixture')->name('addFixture');
+        Route::post('/delete-fixture/{fixtureId}', 'deleteFixture')->name('deleteFixture');
+        Route::post('/update-fixture/{fixtureId}', 'updateFixture')->name('updateFixture');
 
         Route::get('/add-players', 'addPlayers')->name('addPlayers');
         Route::post('/add-player', 'addPlayer')->name('addPlayer');
+        Route::post('/delete-player/{playerId}', 'deletePlayer')->name('deletePlayer');
+        Route::post('/update-player/{playerId}', 'updatePlayer')->name('updatePlayer');
     });
 });
 

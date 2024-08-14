@@ -9,6 +9,7 @@ class StatisticsModel extends Model
 {
     use HasFactory;
 
+    protected  $table = 'statistics';
     protected $fillable = [
         'match_id',
         'type',
