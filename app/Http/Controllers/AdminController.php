@@ -34,18 +34,13 @@ class AdminController extends Controller
     public function addTeam(AddTeamRequest $request)
     {
         $this->teamRepository->createTeam($request);
-        return redirect()->route('admin.panel');
+        return redirect()->back();
     }
 
-    public function deleteTeams()
+    public function deleteTeam(TeamsModel $singleTeam)
     {
-
+        $singleTeam->delete();
+        return redirect()->back();
     }
-
-    public function deleteTeam()
-    {
-
-    }
-
 
 }
