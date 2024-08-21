@@ -16,7 +16,7 @@ class AdminController extends Controller
 
     public function __construct(TeamsRepository $teamsRepository)
     {
-        $this->teamRepository = new TeamsRepository();
+        $this->teamRepository = $teamsRepository;
     }
     public function index()
     {
@@ -34,7 +34,7 @@ class AdminController extends Controller
     public function addTeam(AddTeamRequest $request)
     {
         $this->teamRepository->createTeam($request);
-        return redirect()->route('admin.index');
+        return redirect()->route('admin.panel');
     }
 
     public function deleteTeams()

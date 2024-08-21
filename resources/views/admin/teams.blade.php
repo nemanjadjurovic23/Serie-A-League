@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label for="name">Team Id</label>
-                            <input type="number" class="form-control" id="id" name="id" required>
+                            <input type="number" class="form-control" id="team_id" name="team_id" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="badge">Badge URL</label>
-                            <input type="text" class="form-control" id="badge" name="badge" required>
+                            <label for="stadium_capacity">Stadium Capacity</label>
+                            <input type="number" class="form-control" id="stadium_capacity" name="stadium_capacity" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -38,8 +38,8 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="stadium_capacity">Stadium Capacity</label>
-                        <input type="number" class="form-control" id="stadium_capacity" name="stadium_capacity" required>
+                        <label for="badge">Badge URL</label>
+                        <input type="text" class="form-control" id="badge" name="badge" required>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary">Add Team</button>

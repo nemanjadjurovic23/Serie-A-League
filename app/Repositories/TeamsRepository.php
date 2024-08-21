@@ -9,9 +9,9 @@ class TeamsRepository
 
     private $teamsModel;
 
-    public function __construct()
+    public function __construct(TeamsModel $teamsModel)
     {
-        $this->teamsModel = new TeamsModel();
+        $this->teamsModel = $teamsModel;
     }
 
     public function createTeam($request)
