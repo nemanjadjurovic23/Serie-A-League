@@ -26,4 +26,9 @@ class TeamsRepository
             'stadium_capacity' => $request->get('stadium_capacity'),
         ]);
     }
+
+    public function getTeamById($id)
+    {
+        return $this->teamsModel->where(['id' => $id])->first();
+    }
 }

@@ -16,7 +16,7 @@ class AddTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'team_id' => 'integer|required',
+            'team_id' => 'integer|required|unique:teams,team_id',
             'name' => 'string|required',
             'founded' => 'string|required',
             'badge' => 'string|required',
