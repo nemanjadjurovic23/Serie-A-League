@@ -27,6 +27,18 @@ class TeamsRepository
         ]);
     }
 
+    public function updateTeam(TeamsModel $team, $request)
+    {
+        $team->update([
+            'name' => $request->get('name'),
+            'founded' => $request->get('founded'),
+            'badge' => $request->get('badge'),
+            'stadium_name' => $request->get('stadium_name'),
+            'city' => $request->get('city'),
+            'stadium_capacity' => $request->get('stadium_capacity'),
+        ]);
+    }
+
     public function getTeamById($id)
     {
         return $this->teamsModel->where(['id' => $id])->first();

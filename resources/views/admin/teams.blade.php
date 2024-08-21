@@ -61,7 +61,7 @@
                             <p class="card-text"><strong>Capacity:</strong> {{ $team->stadium_capacity }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-center">
-                            <a class="btn btn-success" href="{{ route('admin.updateTeam', ['singleTeam' => $team->id]) }}">Edit</a>
+                            <a class="btn btn-success" href="{{ route('admin.editTeam', ['singleTeam' => $team->id]) }}">Edit</a>
                             <a class="btn btn-danger ml-2" href="{{ route('admin.deleteTeam', ['singleTeam' => $team->id]) }}">Delete</a>
                         </div>
                     </div>

@@ -7,7 +7,7 @@ use App\Models\EventsModel;
 use App\Models\StandingsModel;
 use App\Models\TeamsModel;
 use App\Repositories\TeamsRepository;
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -41,6 +41,16 @@ class AdminController extends Controller
     {
         $singleTeam->delete();
         return redirect()->back();
+    }
+
+    public function editTeam(TeamsModel $singleTeam)
+    {
+        return view('admin.edit', compact('singleTeam'));
+    }
+    public function updateTeam(TeamsModel $singleTeam, Request $request)
+    {
+        $this->teamRepository->updateTeam($singleTeam, $request);
+        return redirect()->route('admin.addTeams');
     }
 
 }
