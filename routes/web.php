@@ -41,31 +41,31 @@ Route::middleware(AdminCheckMiddleware::class)->prefix('admin')->group(function 
         Route::post('/add-standing', 'addStanding')->name('addStanding');
         Route::get('/delete-standing/{singleTeam}', 'deleteStanding')->name('deleteStanding');
         Route::get('/edit-standing/{singleTeam}', 'editStanding')->name('editStanding');
-        Route::post('/update-standing/{singleTeam}', 'updateStanding')->name('updateStanding');
+        Route::put('/update-standing/{singleTeam}', 'updateStanding')->name('updateStanding');
 
         Route::get('/add-results', 'addResults')->name('addResults');
         Route::post('/add-result', 'addResult')->name('addResult');
         Route::get('/delete-result/{result}', 'deleteResult')->name('deleteResult');
         Route::get('/edit-result/{result}', 'editResult')->name('editResult');
-        Route::post('/update-result/{resultId}', 'updateResult')->name('updateResult');
+        Route::put('/update-result/{resultId}', 'updateResult')->name('updateResult');
 
         Route::get('/add-lineups', 'addLineups')->name('addLineups');
         Route::post('/add-lineup', 'addLineup')->name('addLineup');
         Route::get('/delete-lineups/{singleLineup}', 'deleteLineup')->name('deleteLineup');
         Route::get('/edit-lineups/{singleLineup', 'editLineup')->name('editLineup');
-        Route::post('/update-lineups/{singleLineup}', 'updateLineup')->name('updateLineup');
+        Route::put('/update-lineups/{singleLineup}', 'updateLineup')->name('updateLineup');
 
         Route::get('/add-fixtures', 'addFixtures')->name('addFixtures');
         Route::post('/add-fixture', 'addFixture')->name('addFixture');
         Route::get('/delete-fixture/{fixture}', 'deleteFixture')->name('deleteFixture');
         Route::get('/edit-fixture/{fixture}', 'editFixture')->name('editFixture');
-        Route::post('/update-fixture/{fixtureId}', 'updateFixture')->name('updateFixture');
+        Route::put('/update-fixture/{fixtureId}', 'updateFixture')->name('updateFixture');
 
         Route::get('/add-players', 'addPlayers')->name('addPlayers');
         Route::post('/add-player', 'addPlayer')->name('addPlayer');
         Route::get('/delete-player/{player}', 'deletePlayer')->name('deletePlayer');
         Route::get('/edit-player/{player}', 'editPlayer')->name('editPlayer');
-        Route::post('/update-player/{playerId}', 'updatePlayer')->name('updatePlayer');
+        Route::put('/update-player/{playerId}', 'updatePlayer')->name('updatePlayer');
     });
 });
 

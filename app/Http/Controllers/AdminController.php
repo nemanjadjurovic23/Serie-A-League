@@ -6,6 +6,7 @@ use App\Http\Requests\AddTeamRequest;
 use App\Models\EventsModel;
 use App\Models\StandingsModel;
 use App\Models\TeamsModel;
+use App\Repositories\StandingsRepository;
 use App\Repositories\TeamsRepository;
 use Illuminate\Http\Request;
 
@@ -13,10 +14,12 @@ class AdminController extends Controller
 {
 
     private $teamRepository;
+    private $standingsRepository;
 
-    public function __construct(TeamsRepository $teamsRepository)
+    public function __construct(TeamsRepository $teamsRepository, StandingsRepository $standingsRepository)
     {
         $this->teamRepository = $teamsRepository;
+        $this->standingsRepository = $standingsRepository;
     }
     public function index()
     {
@@ -45,7 +48,7 @@ class AdminController extends Controller
 
     public function editTeam(TeamsModel $singleTeam)
     {
-        return view('admin.edit', compact('singleTeam'));
+        return view('admin.edit-team', compact('singleTeam'));
     }
     public function updateTeam(TeamsModel $singleTeam, Request $request)
     {
@@ -53,4 +56,14 @@ class AdminController extends Controller
         return redirect()->route('admin.addTeams');
     }
 
+    public function editStanding(StandingsModel $singleTeam)
+    {
+        return view('admin.edit-team-standing', compact('singleTeam'));
+    }
+
+    public function updateStanding(StandingsModel $singleTeam, Request $request)
+    {
+        $this->standingsRepository->updateStandings($singleTeam, $request);
+        return redirect()->route('admin.panel');
+    }
 }

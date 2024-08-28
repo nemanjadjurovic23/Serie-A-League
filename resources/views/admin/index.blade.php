@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container my-5">
-        <h2>Standings <a class="btn btn-success">Edit</a></h2>
         <div class="table-responsive">
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
@@ -17,6 +16,7 @@
                     <th>Goals For</th>
                     <th>Goals Against</th>
                     <th>Points</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +33,7 @@
                         <td>{{ $standing['goals_for'] }}</td>
                         <td>{{ $standing['goals_against'] }}</td>
                         <td>{{ $standing['points'] }}</td>
+                        <td><a class="btn btn-success" href="{{ route('admin.editStanding', ['singleTeam' => $standing->id]) }}">Edit</a></td>
                     </tr>
                 @endforeach
                 </tbody>
