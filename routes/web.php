@@ -37,11 +37,13 @@ Route::middleware(AdminCheckMiddleware::class)->prefix('admin')->group(function 
         Route::get('/edit-team/{singleTeam}', 'editTeam')->name('editTeam');
         Route::put('/update-team/{singleTeam}', 'updateTeam')->name('updateTeam');
 
-        Route::get('/add-standings', 'addStandings')->name('addStandings');
-        Route::post('/add-standing', 'addStanding')->name('addStanding');
-        Route::get('/delete-standing/{singleTeam}', 'deleteStanding')->name('deleteStanding');
         Route::get('/edit-standing/{singleTeam}', 'editStanding')->name('editStanding');
         Route::put('/update-standing/{singleTeam}', 'updateStanding')->name('updateStanding');
+        Route::get('/add-standings', 'addStandings')->name('addStandings');
+        Route::post('/add-standing', 'addStanding')->name('addStanding');
+        Route::get('/delete-standing/{singleTeam}', 'deleteTeamFromStanding')->name('deleteTeamFromStanding');
+
+        ////////////////// odavde
 
         Route::get('/add-results', 'addResults')->name('addResults');
         Route::post('/add-result', 'addResult')->name('addResult');

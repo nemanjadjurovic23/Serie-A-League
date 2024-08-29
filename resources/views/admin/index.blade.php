@@ -3,6 +3,7 @@
 @section('content')
     <div class="container my-5">
         <div class="table-responsive">
+            <h3>Standings <a class="btn btn-success" href="{{ route('admin.addStandings') }}">Add New Team In Standing</a></h3>
             <table class="table table-striped table-bordered">
                 <thead class="thead-dark">
                 <tr>
@@ -33,7 +34,10 @@
                         <td>{{ $standing['goals_for'] }}</td>
                         <td>{{ $standing['goals_against'] }}</td>
                         <td>{{ $standing['points'] }}</td>
-                        <td><a class="btn btn-success" href="{{ route('admin.editStanding', ['singleTeam' => $standing->id]) }}">Edit</a></td>
+                        <td>
+                            <a class="btn btn-success" href="{{ route('admin.editStanding', ['singleTeam' => $standing->id]) }}">Edit</a>
+                            <a class="btn btn-danger" href="{{ route('admin.deleteTeamFromStanding', ['singleTeam' => $standing->id]) }}">Delete</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

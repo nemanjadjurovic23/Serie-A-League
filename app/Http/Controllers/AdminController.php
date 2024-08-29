@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddStandingsRequest;
 use App\Http\Requests\AddTeamRequest;
 use App\Models\EventsModel;
 use App\Models\StandingsModel;
@@ -65,5 +66,21 @@ class AdminController extends Controller
     {
         $this->standingsRepository->updateStandings($singleTeam, $request);
         return redirect()->route('admin.panel');
+    }
+
+    public function addStandings()
+    {
+        return view('admin.add-standing');
+    }
+    public function addStanding(AddStandingsRequest $request)
+    {
+        $this->standingsRepository->createStanding($request);
+        return redirect()->back();
+    }
+
+    public function deleteTeamFromStanding(StandingsModel $singleTeam)
+    {
+        $singleTeam->delete();
+        return redirect()->back();
     }
 }
