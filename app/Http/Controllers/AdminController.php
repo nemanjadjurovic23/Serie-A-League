@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddResultsRequest;
 use App\Http\Requests\AddStandingsRequest;
 use App\Http\Requests\AddTeamRequest;
 use App\Models\EventsModel;
 use App\Models\StandingsModel;
 use App\Models\TeamsModel;
+use App\Repositories\ResultsRepository;
 use App\Repositories\StandingsRepository;
 use App\Repositories\TeamsRepository;
 use Illuminate\Http\Request;
@@ -16,11 +18,12 @@ class AdminController extends Controller
 
     private $teamRepository;
     private $standingsRepository;
-
-    public function __construct(TeamsRepository $teamsRepository, StandingsRepository $standingsRepository)
+    private $resultsRepository;
+    public function __construct(TeamsRepository $teamsRepository, StandingsRepository $standingsRepository, ResultsRepository $resultsRepository)
     {
         $this->teamRepository = $teamsRepository;
         $this->standingsRepository = $standingsRepository;
+        $this->resultsRepository = $resultsRepository;
     }
     public function index()
     {
@@ -82,5 +85,16 @@ class AdminController extends Controller
     {
         $singleTeam->delete();
         return redirect()->back();
+    }
+
+    public function addResults()
+    {
+        return view('admin.add-result');
+    }
+
+    public function addResult(AddResultsRequest $request)
+    {
+        $this->resultsRepository->create($request);
+        return redirect()->route('admin.panel');
     }
 }
