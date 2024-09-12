@@ -17,19 +17,8 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label for="country_id" class="col-sm-2 col-form-label">Country ID</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="country_id" name="country_id" required>
-                </div>
-            </div>
-
-            <div class="row mb-3">
-                <label for="league_id" class="col-sm-2 col-form-label">League ID</label>
-                <div class="col-sm-10">
-                    <input type="number" class="form-control" id="league_id" name="league_id" required>
-                </div>
-            </div>
+            <input type="hidden" name="country_id" value="5">
+            <input type="hidden" name="league_id" value="207">
 
             <div class="row mb-3">
                 <label for="match_date" class="col-sm-2 col-form-label">Match Date</label>
@@ -41,14 +30,24 @@
             <div class="row mb-3">
                 <label for="match_status" class="col-sm-2 col-form-label">Match Status</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="match_status" name="match_status" required>
+                    <select class="form-control" id="match_status" name="match_status" required>
+                        <option value="Finished" {{ old('match_status') == 'Finished' ? 'selected' : '' }}>Finished</option>
+                        <option value="Will Start" {{ old('match_status') == 'Will Start' ? 'selected' : '' }}>Will Start</option>
+                    </select>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label for="home_team_id" class="col-sm-2 col-form-label">Home Team ID</label>
+                <label for="home_team_id" class="col-sm-2 col-form-label">Home Team</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="home_team_id" name="home_team_id" required>
+                    <select class="form-control" id="home_team_id" name="home_team_id" onchange="this.form.submit()" required>
+                        <option value="">Select Home Team</option>
+                        @foreach($teams as $team)
+                            <option value="{{ $team->id }}" {{ old('home_team_id') == $team->id ? 'selected' : '' }}>
+                                {{ $team->name }}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 
@@ -60,9 +59,18 @@
             </div>
 
             <div class="row mb-3">
-                <label for="away_team_id" class="col-sm-2 col-form-label">Away Team ID</label>
+                <label for="away_team_id" class="col-sm-2 col-form-label">Away Team</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="away_team_id" name="away_team_id" required>
+                    <select class="form-control" id="away_team_id" name="away_team_id" required>
+                        <option value="">Select Away Team</option>
+                        @foreach($teams as $team)
+                            @if(old('home_team_id') != $team->id) <!-- Isključujemo izabrani Home Team -->
+                            <option value="{{ $team->id }}" {{ old('away_team_id') == $team->id ? 'selected' : '' }}>
+                                {{ $team->name }}
+                            </option>
+                            @endif
+                        @endforeach
+                    </select>
                 </div>
             </div>
 
